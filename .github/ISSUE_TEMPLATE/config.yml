@@ -1,0 +1,4 @@
+contact_links:
+  - name: Support Request
+    url: https://github.com/ks6088ts-labs/cogsearchctl/issues/new
+    about: Create an issue for support request or question relating to cogsearchctl
