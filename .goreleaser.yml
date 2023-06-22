@@ -1,0 +1,45 @@
+project_name: cogsearchctl
+before:
+  hooks:
+    - go mod download
+builds:
+  - env:
+      - CGO_ENABLED=0
+    goos:
+      - darwin
+      - linux
+    goarch:
+      - arm
+      - arm64
+      - amd64
+    goarm:
+      - 5
+      - 6
+      - 7
+    main: ./main.go
+    binary: cogsearchctl
+    flags:
+      - -trimpath
+    ldflags:
+      - -s -w
+      - -X 'github.com/ks6088ts-labs/cogsearchctl/internal.Revision={{.Commit}}'
+      - -X 'github.com/ks6088ts-labs/cogsearchctl/internal.Version={{.Version}}'
+checksum:
+  name_template: "checksums.txt"
+snapshot:
+  name_template: "{{ .Tag }}-next"
+release:
+  draft: true
+archives:
+  - wrap_in_directory: true
+    files:
+      - LICENSE
+      - README.md
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - "^docs:"
+      - "^test:"
+      - "^chore:"
+      - "^build:"
