@@ -8,6 +8,7 @@ builds:
     goos:
       - darwin
       - linux
+      - windows
     goarch:
       - arm
       - arm64
