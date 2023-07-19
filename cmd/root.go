@@ -25,6 +25,7 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/ks6088ts-labs/cogsearchctl/cmd/datasource"
 	"github.com/ks6088ts-labs/cogsearchctl/cmd/index"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
@@ -100,4 +101,5 @@ func initConfig() {
 // registerSubCommands registers sub commands
 func registerSubCommands() {
 	rootCmd.AddCommand(index.GetCommand())
+	rootCmd.AddCommand(datasource.GetCommand())
 }
