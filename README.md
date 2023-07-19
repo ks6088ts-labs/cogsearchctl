@@ -151,3 +151,7 @@ Global Flags:
 ## References
 
 - [nohanaga/Azure-Cognitive-Search-Workshop](https://github.com/nohanaga/Azure-Cognitive-Search-Workshop)
+- [API versions of Search REST APIs](https://learn.microsoft.com/en-us/rest/api/searchservice/search-service-api-versions)
+- [specification/search/data-plane/Azure.Search/preview/2023-07-01-Preview](https://github.com/Azure/azure-rest-api-specs/tree/main/specification/search/data-plane/Azure.Search/preview/2023-07-01-Preview)
+- [Swagger UI](https://swagger.io/tools/swagger-ui/)
+- [Azure/cognitive-search-vector-pr](https://github.com/Azure/cognitive-search-vector-pr)
