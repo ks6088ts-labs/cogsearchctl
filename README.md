@@ -131,6 +131,13 @@ Global Flags:
     --searchApiKey $searchApiKey \
     --searchServiceName $searchServiceName
 2023/07/19 19:24:12 status code=201
+
+# [Run indexer]
+❯ ./dist/cogsearchctl indexer run \
+    --bodyFilePath ./examples/run_indexer.json \
+    --indexerName $indexerName \
+    --searchApiKey $searchApiKey \
+    --searchServiceName $searchServiceName
 ```
 
 ## References
