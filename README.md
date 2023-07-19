@@ -36,7 +36,7 @@ Global Flags:
       --config string   config file (default is $HOME/.cogsearchctl.yaml)
 
 # [Create data source]
-# edit {{env_storage_connection_string}} and {{env_storage_container}} in ./examples/create_datasource.json
+# Note: edit {{env_storage_connection_string}} and {{env_storage_container}} in ./examples/create_datasource.json
 ❯ ./dist/cogsearchctl datasource create \
     --bodyFilePath ./examples/create_datasource.json \
     --dataSourceName $dataSourceName \
@@ -103,6 +103,35 @@ Global Flags:
 2023/07/19 19:08:03 status code=201
 ```
 
+### Create indexer
+
+```shell
+# [Help]
+❯ ./dist/cogsearchctl indexer create --help
+Create an indexer for Azure Cognitive Search.
+
+Usage:
+  cogsearchctl indexer create [flags]
+
+Flags:
+  -f, --bodyFilePath string        body file path (default "body.json")
+  -h, --help                       help for create
+  -i, --indexerName string         indexer name (default "indexerName")
+  -k, --searchApiKey string        search api key (default "searchApiKey")
+  -s, --searchServiceName string   search service name (default "searchServiceName")
+
+Global Flags:
+      --config string   config file (default is $HOME/.cogsearchctl.yaml)
+
+# [Create indexer]
+# Note: edit {{dataSourceName}}, {{indexName}} and {{skillsetName}} in ./examples/create_indexer.json
+❯ ./dist/cogsearchctl indexer create \
+    --bodyFilePath ./examples/create_indexer.json \
+    --indexerName $indexerName \
+    --searchApiKey $searchApiKey \
+    --searchServiceName $searchServiceName
+2023/07/19 19:24:12 status code=201
+```
 
 ## References
 
