@@ -53,7 +53,7 @@ var createCmd = &cobra.Command{
 		}
 		response, err := internal.HttpRequest(fmt.Sprintf("https://%s.search.windows.net/datasources/%s?api-version=2020-06-30", searchServiceName, dataSourceName), bodyFilePath, "PUT", searchApiKey)
 		if err != nil {
-			log.Fatalf("failed to create index. err=%v, response=%v", err, response)
+			log.Fatalf("failed to create data source. err=%v, response=%v", err, response)
 		}
 		defer response.Body.Close()
 		log.Printf("status code=%v", response.StatusCode)

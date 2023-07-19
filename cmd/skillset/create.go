@@ -23,35 +23,48 @@ package skillset
 
 import (
 	"fmt"
+	"log"
 
+	"github.com/ks6088ts-labs/cogsearchctl/internal"
 	"github.com/spf13/cobra"
 )
 
 // createCmd represents the create command
 var createCmd = &cobra.Command{
 	Use:   "create",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Short: "Create a skill set for Azure Cognitive Search",
+	Long:  `Create a skill set for Azure Cognitive Search.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("create called")
+		searchServiceName, err := cmd.Flags().GetString("searchServiceName")
+		if err != nil {
+			log.Fatalf("failed to parse `searchServiceName`: %v", err)
+		}
+		skillSetName, err := cmd.Flags().GetString("skillSetName")
+		if err != nil {
+			log.Fatalf("failed to parse `skillSetName`: %v", err)
+		}
+		searchApiKey, err := cmd.Flags().GetString("searchApiKey")
+		if err != nil {
+			log.Fatalf("failed to parse `searchApiKey`: %v", err)
+		}
+		bodyFilePath, err := cmd.Flags().GetString("bodyFilePath")
+		if err != nil {
+			log.Fatalf("failed to parse `bodyFilePath`: %v", err)
+		}
+		response, err := internal.HttpRequest(fmt.Sprintf("https://%s.search.windows.net/skillsets/%s?api-version=2020-06-30", searchServiceName, skillSetName), bodyFilePath, "PUT", searchApiKey)
+		if err != nil {
+			log.Fatalf("failed to create skill set. err=%v, response=%v", err, response)
+		}
+		defer response.Body.Close()
+		log.Printf("status code=%v", response.StatusCode)
 	},
 }
 
 func init() {
 	skillsetCmd.AddCommand(createCmd)
 
-	// Here you will define your flags and configuration settings.
-
-	// Cobra supports Persistent Flags which will work for this command
-	// and all subcommands, e.g.:
-	// createCmd.PersistentFlags().String("foo", "", "A help for foo")
-
-	// Cobra supports local flags which will only run when this command
-	// is called directly, e.g.:
-	// createCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	createCmd.Flags().StringP("searchServiceName", "s", "searchServiceName", "search service name")
+	createCmd.Flags().StringP("skillSetName", "n", "skillSetName", "skill set name")
+	createCmd.Flags().StringP("searchApiKey", "k", "searchApiKey", "search api key")
+	createCmd.Flags().StringP("bodyFilePath", "f", "body.json", "body file path")
 }
