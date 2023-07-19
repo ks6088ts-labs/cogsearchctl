@@ -35,7 +35,6 @@ var createCmd = &cobra.Command{
 	Short: "Create an index for Azure Cognitive Search",
 	Long:  `Create an index for Azure Cognitive Search.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("create called")
 		searchServiceName, err := cmd.Flags().GetString("searchServiceName")
 		if err != nil {
 			log.Fatalf("failed to parse `searchServiceName`: %v", err)
