@@ -19,7 +19,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
-package index
+package datasource
 
 import (
 	"fmt"
@@ -27,16 +27,16 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// indexCmd represents the index command
-var indexCmd = &cobra.Command{
-	Use:   "index",
-	Short: "Index commands",
-	Long:  `Index commands`,
+// datasourceCmd represents the datasource command
+var datasourceCmd = &cobra.Command{
+	Use:   "datasource",
+	Short: "Datasource commands",
+	Long:  `Datasource commands`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("index called")
+		fmt.Println("datasource called")
 	},
 }
 
 func GetCommand() *cobra.Command {
-	return indexCmd
+	return datasourceCmd
 }
