@@ -27,6 +27,7 @@ import (
 
 	"github.com/ks6088ts-labs/cogsearchctl/cmd/datasource"
 	"github.com/ks6088ts-labs/cogsearchctl/cmd/index"
+	"github.com/ks6088ts-labs/cogsearchctl/cmd/indexer"
 	"github.com/ks6088ts-labs/cogsearchctl/cmd/skillset"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
@@ -104,4 +105,5 @@ func registerSubCommands() {
 	rootCmd.AddCommand(index.GetCommand())
 	rootCmd.AddCommand(datasource.GetCommand())
 	rootCmd.AddCommand(skillset.GetCommand())
+	rootCmd.AddCommand(indexer.GetCommand())
 }
