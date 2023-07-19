@@ -45,7 +45,7 @@ Global Flags:
 2023/07/19 18:43:21 status code=201
 ```
 
-### Create index
+### index
 
 ```shell
 # [Help]
@@ -72,9 +72,17 @@ Global Flags:
     --searchIndexName $searchIndexName \
     --searchServiceName $searchServiceName
 2023/07/19 18:13:46 status code=201
+
+# [Search index]
+❯ ./dist/cogsearchctl index search \
+    --bodyFilePath ./examples/search_index.json \
+    --searchApiKey $searchApiKey \
+    --searchIndexName $searchIndexName \
+    --searchServiceName $searchServiceName
+2023/07/19 20:01:44 status code=200
 ```
 
-### Create skill set
+### skill set
 
 ```shell
 # [Help]
@@ -103,7 +111,7 @@ Global Flags:
 2023/07/19 19:08:03 status code=201
 ```
 
-### Create indexer
+### indexer
 
 ```shell
 # [Help]
